@@ -17,6 +17,13 @@ class RoomList extends Component {
     });
   }
 
+  createRoom(e) {
+    e.preventDefault();
+      this.roomsRef.push({
+      name: newRoomName
+      });
+  }
+
   render() {
     return (
         <div className="RoomList">
@@ -26,7 +33,11 @@ class RoomList extends Component {
                 {room.name}
             </div>
           )}
-      </div>
+          <form onSubmit ={ (e) => this.createRoom(e)} >
+    	   		<input type="text" value="Chat Room"/>
+    	   		<input type="submit" />
+    	   </form>
+        </div>
     );
   }
 }
