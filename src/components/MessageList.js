@@ -16,7 +16,7 @@ class MessageList extends Component {
     });
   }
 
-  createRoom(e) {
+  createMessage(e) {
     e.preventDefault();
     if (!this.state.newMessageName) { return }
       this.messagesRef.push({
@@ -30,8 +30,8 @@ class MessageList extends Component {
 
   render() {
     return (
-      <div className="MessageList>
-        {this.state.message.map ((message, index) =>
+      <div className="MessageList">
+        {this.state.messages.map ((message, index) =>
           <div className="MessageID"
             key={index}>
               {message.chatData}
