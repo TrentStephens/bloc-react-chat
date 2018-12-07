@@ -10,8 +10,8 @@ class MessageList extends Component {
 
   componentDidMount() {
     this.messagesRef.on('child_added', snapshot => {
-      const room = snapshot.val();
-      room.key = snapshot.key;
+      const message = snapshot.val();
+      message.key = snapshot.key;
       this.setState({ messages: this.state.messages.concat(message)})
     });
   }
@@ -23,6 +23,7 @@ class MessageList extends Component {
       message: this.state.newMessageName
       });
       this.setState({ newMessageName: ''});
+  }
 
   handleChange(e){
     this.setState({newMessageName: e.target.value});
@@ -34,7 +35,7 @@ class MessageList extends Component {
         {this.state.messages.map ((message, index) =>
           <div className="MessageID"
             key={index}>
-              {message.chatData}
+              {message.message}
           </div>
         )}
         <form onSubmit ={ (e) => this.createMessage(e)} >
