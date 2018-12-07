@@ -16,11 +16,17 @@ import MessageList from './components/MessageList';
 
 
 class App extends Component {
+
+  setRoom(index){
+    this.setState({rooms: index})
+  }
+
   render() {
     return (
       <div className="App">
         <RoomList
         firebase = {firebase}
+        setRoom = {(index) => this.setRoom(index)}
          />
          <MessageList
          firebase = {firebase}
