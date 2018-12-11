@@ -17,8 +17,9 @@ import MessageList from './components/MessageList';
 
 class App extends Component {
 
-  setRoom(index){
-    this.setState({rooms: index})
+  setRoom(roomID){
+    var setRoomID = this.state.roomID
+    this.setState({rooms: setRoomID})
   }
 
   render() {
@@ -26,7 +27,7 @@ class App extends Component {
       <div className="App">
         <RoomList
         firebase = {firebase}
-        setRoom = {(index) => this.setRoom(index)}
+        setRoom = {(roomID) => this.setRoom(roomID)}
          />
          <MessageList
          firebase = {firebase}
