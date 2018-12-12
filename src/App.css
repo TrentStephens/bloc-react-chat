@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .App-logo {
@@ -20,6 +20,25 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.room-item {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.RoomID {
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.Chat {
+  padding-top: 20px;
+}
+
+.roomDetail {
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {
