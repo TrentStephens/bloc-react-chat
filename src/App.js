@@ -18,8 +18,7 @@ import MessageList from './components/MessageList';
 class App extends Component {
 
   setRoom(roomID){
-    var setRoomID = this.state.roomID
-    this.setState({rooms: setRoomID})
+    this.setState({activeRoom: roomID})
   }
 
   render() {
