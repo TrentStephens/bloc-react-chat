@@ -20,7 +20,10 @@ class MessageList extends Component {
     e.preventDefault();
     if (!this.state.newMessageName) { return }
       this.messagesRef.push({
-      message: this.state.newMessageName
+      content: this.state.newMessageName,
+      roomId: this.props.activeRoomId.key,
+      username: this.props.username,
+      sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
       });
       this.setState({ newMessageName: ''});
   }
@@ -31,18 +34,24 @@ class MessageList extends Component {
 
   render() {
     return (
-      <div className="MessageList">
-        {this.state.messages.map ((message, index) =>
-          <div className="MessageID"
-            key={index}>
-              {message.message}
-          </div>
-        )}
-        <form onSubmit ={ (e) => this.createMessage(e)} >
-          <input type="text" name="message-data" value={this.state.newMessageName} placeholder="Enter Message" onChange={(e)=>this.handleChange(e)} />
-          <input type="submit" />
-        </form>
-      </div>
+      (this.props.activeRoomId !== "") ?
+        <div className="MessageList">
+          {this.state.messages.map ((message, index) =>
+
+            if (this.props.activeRoomId.key = index) {
+              <div className="MessageID"
+                key={index}>
+                  {message.content}
+              </div>
+
+            }
+          )}
+          <form onSubmit ={ (e) => this.createMessage(e)} >
+            <input type="text" name="message-data" value={this.state.newMessageName} placeholder="Enter Message" onChange={(e)=>this.handleChange(e)} />
+            <input type="submit" />
+          </form>
+        </div>
+      : <div>Please Select Your Room</div>
     );
   }
 }
