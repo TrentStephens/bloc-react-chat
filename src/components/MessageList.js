@@ -14,6 +14,7 @@ class MessageList extends Component {
       message.key = snapshot.key;
       this.setState({ messages: this.state.messages.concat(message)})
     });
+
   }
 
   createMessage(e) {
@@ -37,7 +38,7 @@ class MessageList extends Component {
       (this.props.activeRoomId !== "") ?
         <div className="MessageList" >
           {this.state.messages.filter ((message, index) =>
-            this.props.activeRoomId === message.roomId
+            this.props.activeRoomId.key === message.roomId
           )}
           {this.state.messages.map ((message, index) =>
             <div className="MessageID"
