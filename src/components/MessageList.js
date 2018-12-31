@@ -37,15 +37,17 @@ class MessageList extends Component {
     return (
       (this.props.activeRoomId !== "") ?
         <div className="MessageList" >
-          {this.state.messages.filter ((message, index) =>
-            this.props.activeRoomId.key === message.roomId
-          )}
-          {this.state.messages.map ((message, index) =>
-            <div className="MessageID"
-              key={index}>
-                {message.content}
-            </div>
-          )}
+        {this.state.messages.filter ((message, index) => this.props.activeRoomId.key === message.roomId).map ((message, index) =>
+
+         <div className="MessageID"
+
+           key={index}>
+
+             {message.content}
+
+         </div>
+
+       )}
           <form onSubmit ={ (e) => this.createMessage(e)} >
             <input type="text" name="message-data" value={this.state.newMessageName} placeholder="Enter Message" onChange={(e)=>this.handleChange(e)} />
             <input type="submit" />
