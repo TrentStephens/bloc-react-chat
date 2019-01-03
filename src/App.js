@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 
 // Initialize Firebase
   var config = {
@@ -19,20 +20,33 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-      this.state = {activeRoom: ''}
+      this.state = {
+        activeRoom: '',
+        activeUser: ''
+      };
   };
 
   setRoom(roomID){
+    //console.log(roomID);
     this.setState({activeRoom: roomID})
-    console.log(this.state.activeRoom)
+    //console.log(this.state.activeRoom)
+  }
+
+  setUser(userID){
+    this.setState({activeUser: userID})
   }
 
   render() {
     return (
       <div className="App">
+        <User
+        firebase = {firebase}
+        setUser = {(user)=>this.setUser(user)}
+        user = {this.state.activeUser}
+        />
         <RoomList
         firebase = {firebase}
-        setRoom = {this.setRoom.bind(this)}
+        setRoom = {(roomID)=>this.setRoom(roomID)}
          />
          <MessageList
          firebase = {firebase}

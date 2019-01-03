@@ -34,8 +34,9 @@ class MessageList extends Component {
   }
 
   render() {
+    //console.log(this.props.activeRoomId);
     return (
-      (this.props.activeRoomId !== "") ?
+      (this.props.activeRoomId !== "" && this.props.activeRoomId !== undefined) ?
         <div className="MessageList" >
         {this.state.messages.filter ((message, index) => this.props.activeRoomId.key === message.roomId).map ((message, index) =>
 
