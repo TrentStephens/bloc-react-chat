@@ -44,7 +44,7 @@ class MessageList extends Component {
 
            key={index}>
 
-             {message.content}
+             {this.props.user.displayName} {message.content}
 
          </div>
 
