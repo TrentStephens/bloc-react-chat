@@ -44,7 +44,7 @@ class MessageList extends Component {
 
            key={index}>
 
-             {this.props.user.displayName}: {message.content}
+             {this.props.user === null ? 'Guest' : this.props.user.displayName}: {message.content}
 
          </div>
 
