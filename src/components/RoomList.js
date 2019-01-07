@@ -40,10 +40,11 @@ class RoomList extends Component {
                 {room.name}
             </div>
           )}
-          <form onSubmit ={ (e) => this.createRoom(e)} >
-    	   		<input type="text" name="chat-room" value={this.state.newRoomName} placeholder="Chat Room Name" onChange={(e)=>this.handleChange(e)} />
-    	   		<input type="submit" />
-    	   </form>
+          {this.props.user === null ? <b>Please Log-In To Send a Message</b> :
+            <form onSubmit ={ (e) => this.createRoom(e)} >
+    	   		  <input type="text" name="chat-room" value={this.state.newRoomName} placeholder="Chat Room Name" onChange={(e)=>this.handleChange(e)} />
+    	   		    <input type="submit" />
+    	      </form>}
         </div>
     );
   }
